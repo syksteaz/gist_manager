@@ -1,8 +1,27 @@
-<h1>TEST</h1>
+<div class="container text-center">
+  <h1>GistMeUp!</h1>
+  <h3>Find the perfect Gist</h3>
 
-<% if user_signed_in? %>
-<%= current_user.username %>
-<%= image_tag current_user.picture %>
-<%= current_user.github %>
+  <% if user_signed_in? %>
+    <%= link_to 'Your GitHub account', current_user.github, target: "_blank" %>
+  <% end %>
 
-<% end %>
+  <% @gists.each do |gist| %>
+    <ul class="list-unstyled">
+      <li>
+        Name : <%= gist["files"].values.first["filename"] %>
+      </li>
+      <li>
+        Language : <%= gist["files"].values.first["language"] %>
+      </li>
+      <li>
+        Content : <%= gist["files"].values.first["raw_url"] %>
+      </li>
+      <li>
+        Last update : <%= gist["updated_at"] %>
+      </li>
+    </ul>
+
+  <% end %>
+
+</div>
