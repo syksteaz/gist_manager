@@ -1,4 +1,13 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+#gists {
+  ul{
+    margin-bottom: 20px;
+    padding : 10px;
+    background-color: #E3E3E3;
+    border-radius: 3px;
+    text-decoration: none;
+    list-style: none;
+    box-shadow: 1px 1px 3px #C8C8C8;
+  }
+}
+
+

@@ -1,16 +1,35 @@
-<div class="description">
-  Description : <%= gist["description"] %>
-</div>
-<div class="filename">
-  Filename : <%= gist["files"].values.first["filename"] %>
-</div>
-<div class="language">*
-  Language : <%= gist["files"].values.first["language"] %>
-</div>
-<div class="content">
-  Content : <%= gist["files"].values.first["raw_url"] %>
-</div>
-<div class="last-update">
-  Last update : <%= gist["updated_at"].to_time.strftime("%A, %d %b %Y %l:%M %p") %>
+<div class="card">
+  <div class="card-head">
+    <div class="picture">
+      <% if gist["owner"] %>
+        <%= image_tag gist["owner"]["avatar_url"], class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "http://placehold.it/350x350", class: "avatar-large" %>
+      <% end %>
+    </div>
+    <div class="filename">
+      <% if gist["owner"] %>
+       <%= link_to gist["owner"]["login"], "https://gist.github.com/#{gist["owner"]["login"]}", target: "_blank" %> / <%= gist["files"].values.first["filename"] %>
+       <% else %>
+        Anonymous / <%= gist["files"].values.first["filename"] %>
+      <% end %>
+    </div>
+    <div class="description">
+      <% if gist["description"] %>
+        <%= gist["description"][0..100] %>
+      <% end %>
+    </div>
+    <div class="language">
+      Language : <%= gist["files"].values.first["language"] %>
+    </div>
+  </div>
+
+  <div class="content">
+    Content : <%= (gist["files"].values.first["raw_url"]) %>
+  </div>
+
+  <div class="last-update">
+    Last update : <%= gist["updated_at"].to_time.strftime("%A, %d %b %Y %l:%M %p") %>
+  </div>
 </div>
 
