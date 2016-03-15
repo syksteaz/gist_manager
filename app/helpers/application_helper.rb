@@ -1,6 +1,7 @@
 module ApplicationHelper
   def html_mark(text)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    renderer = Redcarpet::Render::HTML.new(render_options = {safe_links_only: true, hard_wrap: true})
+    markdown = Redcarpet::Markdown.new(renderer, autolink: true, tables: true)
     markdown.render(text).html_safe
   end
 end
