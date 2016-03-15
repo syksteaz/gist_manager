@@ -24,6 +24,11 @@
 
   </div>
 
-
+  <div class="current-user-gists">
+    <h3>Your gists</h3>
+    <% @current_user_gists.each do |gist| %>
+      <%= render 'shared/card', gist: gist %>
+    <% end %>
+  </div>
 
 </div>

@@ -18,11 +18,11 @@
         </div>
         <div class="description">
           <% if gist["description"] %>
-            <%= html_mark(gist["description"][0..100])%>
+            <p> <%= html_mark(gist["description"][0..100])%></p>
           <% end %>
         </div>
         <div class="language">
-          Language : <%= gist["files"].values.first["language"] %>
+          <p>Language : <%= gist["files"].values.first["language"] %></p>
         </div>
       </div>
     </div>
