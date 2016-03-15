@@ -1,17 +1,29 @@
 <div class="container">
-  <div class="text-center padded">
+  <div class="text-center small-padded">
     <h1>GistMeUp!</h1>
     <h4>Find the perfect Gist</h4>
-    <input type="text" id="username" placeholder="username">
-    <button class="btn btn-sm btn-primary" id="search">
-      Search
-    </button>
+    <div id="search-box" class="small-padded">
+      <input type="text" id="username" placeholder="Username">
+      <button class="btn btn-sm btn-primary" id="search">
+        Search
+      </button>
+    </div>
   </div>
 
   <div id="gists">
-    <% @gists.each do |gist| %>
-      <%= render 'shared/card', gist: gist %>
-    <% end %>
+    <div id="header" class="text-center">
+
+    </div>
+
+    <div id="content">
+      <h3>All the latest gists</h3>
+      <% @gists.each do |gist| %>
+        <%= render 'shared/card', gist: gist %>
+      <% end %>
+    </div>
+
   </div>
+
+
 
 </div>

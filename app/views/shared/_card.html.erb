@@ -16,7 +16,7 @@
     </div>
     <div class="description">
       <% if gist["description"] %>
-        <%= gist["description"][0..100] %>
+        <%= html_mark(gist["description"][0..100])%>
       <% end %>
     </div>
     <div class="language">
@@ -25,7 +25,11 @@
   </div>
 
   <div class="content">
-    Content : <%= (gist["files"].values.first["raw_url"]) %>
+    <% if open(gist["files"].values.first["raw_url"]) %>
+      <%= html_mark(open(gist["files"].values.first["raw_url"]).read) %>
+    <% else %>
+      <p>Invalid content</p>
+    <% end %>
   </div>
 
   <div class="last-update">
