@@ -1,1 +1,8 @@
 <h1>TEST</h1>
+
+<% if user_signed_in? %>
+<%= current_user.username %>
+<%= image_tag current_user.picture %>
+<%= current_user.github %>
+
+<% end %>
