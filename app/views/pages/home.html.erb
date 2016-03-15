@@ -7,21 +7,7 @@
   <% end %>
 
   <% @gists.each do |gist| %>
-    <ul class="list-unstyled">
-      <li>
-        Name : <%= gist["files"].values.first["filename"] %>
-      </li>
-      <li>
-        Language : <%= gist["files"].values.first["language"] %>
-      </li>
-      <li>
-        Content : <%= gist["files"].values.first["raw_url"] %>
-      </li>
-      <li>
-        Last update : <%= gist["updated_at"] %>
-      </li>
-    </ul>
-
+    <%= render 'shared/card', gist: gist %>
   <% end %>
 
 </div>

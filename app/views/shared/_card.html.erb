@@ -1,0 +1,16 @@
+<div class="description">
+  Description : <%= gist["description"] %>
+</div>
+<div class="filename">
+  Filename : <%= gist["files"].values.first["filename"] %>
+</div>
+<div class="language">*
+  Language : <%= gist["files"].values.first["language"] %>
+</div>
+<div class="content">
+  Content : <%= gist["files"].values.first["raw_url"] %>
+</div>
+<div class="last-update">
+  Last update : <%= gist["updated_at"].to_time.strftime("%A, %d %b %Y %l:%M %p") %>
+</div>
+

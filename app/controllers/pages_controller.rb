@@ -13,5 +13,4 @@ class PagesController < ApplicationController
     @gists.flatten!
   end
 
-
 end
