@@ -9,31 +9,48 @@
       </button>
     </div>
   </div>
-
-  <div id="gists">
-    <div id="header" class="text-center">
-
-    </div>
-
-    <div id="content">
-      <h3>All the latest gists</h3>
-      <% @gists.each do |gist| %>
-        <%= render 'shared/card', gist: gist %>
-      <% end %>
-    </div>
-
+  <div class="tabs">
+      <a class="tab active" data-target="#all_gists">
+        <h3>All the latest gists</h3>
+      </a>
+      <a class="tab" data-target="#current_user_gists">
+        <h3>Your gists</h3>
+      </a>
   </div>
-
-
-  <div class="current-user-gists">
-    <h3>Your gists</h3>
+  <div class="tab-content" id="all_gists">
+    <div id="gists">
+      <div id="header" class="text-center">
+      </div>
+      <div id="content">
+        <% @gists.each do |gist| %>
+          <%= render 'shared/card', gist: gist %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content hidden" id="current_user_gists">
     <% if user_signed_in? %>
+      <a id="create_gist" data-target="#new_gist">
+        <h3><i class="fa fa-plus-circle"></i> New gist</h3>
+      </a>
+      <div class= "hidden" id="new_gist">
+        Hello world I am a new gist
+      </div>
       <% @current_user_gists.each do |gist| %>
         <%= render 'shared/card', gist: gist %>
       <% end %>
     <% else %>
-      Please sign in first
+      <%= link_to omniauth_authorize_path(:user, :github) do %>
+        <div class="text-center">
+         <h4>First, sign in with GithHub</h4>
+          <i class="fa fa-github fa-5x"></i>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
+
 </div>
+
+
+
