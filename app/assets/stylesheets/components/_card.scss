@@ -1,0 +1,42 @@
+.card{
+  min-height: 10em;
+  padding: 10px 0;
+  margin-bottom: 5px ;
+
+  .card-head{
+    min-height: 3em;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    .picture{
+      flex:start;
+      margin-right: 10px;
+    }
+    .description{
+      flex:1;
+      margin-left: 10px;
+      p{
+        margin-bottom: 0px;
+      }
+    }
+    .language{
+      p{
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .last-update{
+
+  }
+
+}
+
+
+.pannel-overflow{
+  max-height: 15em;
+  overflow: scroll;
+}
+
+.pannel-body{
+  margin-bottom: 0;
+}

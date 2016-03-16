@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="card-head">
+        <div class="picture">
+          <% if gist["owner"] %>
+            <%= image_tag gist["owner"]["avatar_url"], class: "avatar-large" %>
+          <% else %>
+            <%= image_tag "http://placehold.it/350x350", class: "avatar-large" %>
+          <% end %>
+        </div>
+        <div class="filename">
+          <% if gist["owner"] %>
+           <%= link_to gist["owner"]["login"], "https://gist.github.com/#{gist["owner"]["login"]}", target: "_blank" %> / <%= gist["files"].values.first["filename"] %>
+           <% else %>
+            Anonymous / <%= gist["files"].values.first["filename"] %>
+          <% end %>
+        </div>
+        <div class="description">
+          <% if gist["description"] %>
+            <p> <%= html_mark(gist["description"][0..100])%></p>
+          <% end %>
+        </div>
+        <div class="language">
+          <p>Language : <%= gist["files"].values.first["language"] %></p>
+        </div>
+      </div>
+    </div>
+    <div class="content panel-body pannel-overflow">
+      <% if open(gist["files"].values.first["raw_url"]) %>
+        <%= html_mark(open(gist["files"].values.first["raw_url"]).read) %>
+      <% else %>
+        <p>Invalid content</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="last-update">
+    Last update : <%= gist["updated_at"].to_time.strftime("%A, %d %b %Y %l:%M %p") %>
+  </div>
+</div>
+
