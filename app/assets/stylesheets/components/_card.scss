@@ -1,7 +1,9 @@
 .card{
   min-height: 10em;
-  padding: 10px 0;
+  padding: 0px 0px 10px 0px;
   margin-bottom: 5px ;
+  box-shadow: 1px 1px 3px #B6B6B6;
+  margin-bottom: 2em;
 
   .card-head{
     min-height: 3em;
@@ -25,12 +27,17 @@
       }
     }
   }
-  .last-update{
-
+  .card-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
   }
-
 }
 
+#delete{
+  border-radius: 50%;
+}
 
 .pannel-overflow{
   max-height: 15em;
