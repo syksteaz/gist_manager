@@ -34,7 +34,12 @@
         <h3><i class="fa fa-plus-circle"></i> New gist</h3>
       </a>
       <div class= "hidden" id="new_gist">
-        Hello world I am a new gist
+        <input type="text" id="description" placeholder="description">
+        <input type="text" id="filename" placeholder="filename">
+        <input type="text" id="content" placeholder="Type here">
+        <button class="btn btn-sm btn-primary" id="create">
+          Create
+        </button>
       </div>
       <% @current_user_gists.each do |gist| %>
         <%= render 'shared/card', gist: gist %>
