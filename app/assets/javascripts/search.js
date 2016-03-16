@@ -3,6 +3,8 @@ function fetchGists() {
     url: "https://api.github.com/users/" + $('#username').val() + "/gists",
     success: function(data) {
       $('#create-gist').addClass('hidden');
+      $('.tabs').addClass('hidden');
+      $('#back-button').removeClass('hidden');
       $('#content').empty();
       $('#header').empty();
       var username = data[0].owner.login
@@ -14,7 +16,6 @@ function fetchGists() {
 
       $('#header').html([
         '<img src = '+ picture +', class="avatar-x-large">',
-        '<a id = "back" data-target = "#all_gists">Back to all gists</a>'
         ].join("\n"));
       $('#header').prepend('<h4>All the gists of '+ username +'</h4>');
       data.forEach(function(gist) {
@@ -76,8 +77,7 @@ $(document).ready(function() {
     fetchGists();
     }
   });
-  $('#back').click(function() {
-    $($(this).data("target")).removeClass('hidden');
-    $("#current_user_gists").addClass('hidden');
+  $('#back-button').on("click", function() {
+    window.location.reload();
   });
 });

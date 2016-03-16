@@ -4,4 +4,5 @@
 //= require search
 //= require tabs
 //= require creategist
+//= require deletegist
 //= require_tree .

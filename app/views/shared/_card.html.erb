@@ -1,4 +1,4 @@
-<div class="card">
+<%= content_tag :div, class: "card", id: gist["id"] do %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="card-head">
@@ -34,8 +34,13 @@
       <% end %>
     </div>
   </div>
-  <div class="last-update">
+  <div class="card-footer">
     Last update : <%= gist["updated_at"].to_time.strftime("%A, %d %b %Y %l:%M %p") %>
+    <% if user_signed_in? && gist["owner"] && current_user.username == gist["owner"]["login"] %>
+      <div class="btn btn-danger" id="delete">
+        <i class="fa fa-trash-o"></i>
+      </div>
+    <% end %>
   </div>
-</div>
+<% end %>
 

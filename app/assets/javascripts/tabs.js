@@ -10,7 +10,7 @@ $(function(){
     $($(this).data("target")).removeClass('hidden');
   });
 
-  $("#create_gist").on("click", function(e){
+  $("#create-gist").on("click", function(e){
     $($(this).data("target")).toggleClass('hidden');
   });
 
