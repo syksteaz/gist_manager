@@ -24,10 +24,15 @@
 
   </div>
 
+
   <div class="current-user-gists">
     <h3>Your gists</h3>
-    <% @current_user_gists.each do |gist| %>
-      <%= render 'shared/card', gist: gist %>
+    <% if user_signed_in? %>
+      <% @current_user_gists.each do |gist| %>
+        <%= render 'shared/card', gist: gist %>
+      <% end %>
+    <% else %>
+      Please sign in first
     <% end %>
   </div>
 

@@ -12,12 +12,14 @@ class PagesController < ApplicationController
     end
     @gists.flatten!
 
-    @current_user_gists = []
-    api_url = "https://api.github.com/users/#{current_user.username}/gists"
-    open(api_url) do |stream|
-      @current_user_gists << JSON.parse(stream.read)
+    if user_signed_in?
+      @current_user_gists = []
+      api_url = "https://api.github.com/users/#{current_user.username}/gists"
+      open(api_url) do |stream|
+        @current_user_gists << JSON.parse(stream.read)
+      end
+      @current_user_gists.flatten!
     end
-    @current_user_gists.flatten!
 
   end
 
