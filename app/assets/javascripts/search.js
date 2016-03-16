@@ -12,7 +12,10 @@ function fetchGists() {
           var picture = "http://placehold.it/350x350";
         };
 
-      $('#header').html('<img src = '+ picture +', class="avatar-x-large">');
+      $('#header').html([
+        '<img src = '+ picture +', class="avatar-x-large">',
+        '<a id = "back" data-target = "#all_gists">Back to all gists</a>'
+        ].join("\n"));
       $('#header').prepend('<h4>All the gists of '+ username +'</h4>');
       data.forEach(function(gist) {
         var filename = Object.keys(gist.files)[0]
@@ -20,14 +23,40 @@ function fetchGists() {
         var content = gist.files[filename].raw_url
         var description = gist.description
         var updated_at = gist.updated_at
+        var text_content = $.ajax({
+          url: content,
+          success: function(data){
+            return data;
+          }
+        });
+        var card = $([
+          '<div class="card">',
+            '<div class= "panel panel-default">',
+            '    <div class = "panel-heading">',
+            '      <div class = "card-head">',
+            '        <div class = "filename">',
+                       filename,
+            '        </div>',
+            '        <div class = "description">',
+                       description,
+            '        </div>',
+            '        <div class = "language">',
+                        language,
+            '        </div>',
+            '     </div>',
+            '   </div>',
+            '    <div class = "content panel-body pannel-overflow">',
+                    text_content,
+            '    </div>',
+            '</div>',
+            '<div class= "last-update">',
+               updated_at,
+            '</div>',
+          '</div>'
+        ].join("\n"));
+
         $('#content').append(
-          "<ul>"
-          +"<li>" + filename + "</li>"
-          + "<li>" + language + "</li>"
-          + "<li>" + content + "</li>"
-          + "<li>" + description + "</li>"
-          + "<li>" + updated_at + "</li>"
-          + "</ul>"
+          card
           );
       });
     },
@@ -46,5 +75,9 @@ $(document).ready(function() {
     if(e.keyCode == 13){
     fetchGists();
     }
+  });
+  $('#back').click(function() {
+    $($(this).data("target")).removeClass('hidden');
+    $("#current_user_gists").addClass('hidden');
   });
 });

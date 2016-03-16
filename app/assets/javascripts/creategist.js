@@ -16,7 +16,6 @@ function createGist() {
     url: "https://api.github.com/gists",
     data: getGistDataAsJson(),
     success: function(data) {
-      console.log(data);
       $('#result').removeClass('error').html(
         "Successfully created gist at " + data.html_url);
     },
