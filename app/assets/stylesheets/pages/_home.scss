@@ -9,7 +9,7 @@
     box-shadow: 1px 1px 3px #C8C8C8;
   }
   h3{
-    margin-bottom: 0px;
+    margin: 0px auto;
   }
 }
 
@@ -32,4 +32,18 @@
 a:hover{
   text-decoration: none;
   cursor: pointer !important;
+}
+
+#create-gist{
+  margin-top: 0px;
+}
+
+#new_gist{
+  label{
+    color:#999999;
+  }
+}
+
+#search{
+  font-weight: bold;
 }
