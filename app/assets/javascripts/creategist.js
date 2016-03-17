@@ -19,7 +19,7 @@ function createGist() {
     success: function(data) {
       window.location.reload();
       $('#result').removeClass('error').html(
-        "Successfully created gist at " + data.html_url);
+        "Successfully created gist at " + data.html_url + "//  Please wait while updating the page...");
     },
     error: function(jqXHR) {
       $('#result').addClass('error').html(jqXHR.responseText);

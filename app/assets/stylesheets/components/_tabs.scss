@@ -2,10 +2,10 @@
   background: none;
   display: flex;
   padding: 10px 10px 0 10px;
-  color: black;
+  color: #5D5D5D;
 }
 .tabs a {
-  color: black;
+  color: #5D5D5D;
 }
 .tabs a:hover {
   cursor: pointer;
@@ -26,7 +26,7 @@
   flex: 1 0 25%;
   text-align: center;
   padding: 20px 0;
-  box-shadow: 1px 1px 3px #756A66;
+  box-shadow: 1px 1px 3px #B1B1B1;
 }
 
 .tab:first-child {
@@ -36,14 +36,14 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: #ce1a15;
+  background: $green;
   color: white;
   h3 {
     color: white;
     font-weight: bold;
   }
   &:hover {
-    background: #ce1a15;
+    background: $green;
   }
 }
 
