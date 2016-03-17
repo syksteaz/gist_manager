@@ -24,41 +24,41 @@ function fetchGists() {
         var content = gist.files[filename].raw_url
         var description = gist.description
         var updated_at = gist.updated_at
-        var text_content = $.ajax({
+        $.ajax({
           url: content,
           success: function(data){
-            return data;
+            var card = $([
+              '<div class="card">',
+                '<div class= "panel panel-default">',
+                '    <div class = "panel-heading">',
+                '      <div class = "card-head">',
+                '        <div class = "filename">',
+                           filename,
+                '        </div>',
+                '        <div class = "description">',
+                           description,
+                '        </div>',
+                '        <div class = "language">',
+                            language,
+                '        </div>',
+                '     </div>',
+                '   </div>',
+                '    <div class = "content panel-body pannel-overflow">',
+                        data,
+                '    </div>',
+                '</div>',
+                '<div class="card-footer">',
+                  '<div class= "last-update">',
+                     updated_at,
+                  '</div>',
+                '</div>',
+              '</div>'
+              ].join("\n"));
+            $('#content').append(
+            card
+            );
           }
         });
-        var card = $([
-          '<div class="card">',
-            '<div class= "panel panel-default">',
-            '    <div class = "panel-heading">',
-            '      <div class = "card-head">',
-            '        <div class = "filename">',
-                       filename,
-            '        </div>',
-            '        <div class = "description">',
-                       description,
-            '        </div>',
-            '        <div class = "language">',
-                        language,
-            '        </div>',
-            '     </div>',
-            '   </div>',
-            '    <div class = "content panel-body pannel-overflow">',
-                    text_content,
-            '    </div>',
-            '</div>',
-            '<div class= "last-update">',
-               updated_at,
-            '</div>',
-          '</div>'
-        ].join("\n"));
-
-        $('#content').append(
-          card
-          );
       });
     },
     error: function(jqXHR) {
