@@ -48,7 +48,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  # <<: *default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  socket: /var/run/mysqld/mysqld.sock
   database: gist_manager_production
   username: gist_manager
   password: ENV['GIST_MANAGER_DATABASE_PASSWORD']
