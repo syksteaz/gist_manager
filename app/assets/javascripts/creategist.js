@@ -11,11 +11,13 @@ function getGistDataAsJson() {
 }
 
 function createGist() {
+
   $.ajax({
     type: "POST",
     url: "https://api.github.com/gists",
     data: getGistDataAsJson(),
     success: function(data) {
+      window.location.reload();
       $('#result').removeClass('error').html(
         "Successfully created gist at " + data.html_url);
     },
@@ -26,7 +28,7 @@ function createGist() {
 }
 
 $(document).ready(function() {
-  $("#create-gist").submit(function(e) {
+  $("#submit-gist").submit(function(e) {
     e.preventDefault();
     createGist();
   });

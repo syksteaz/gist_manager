@@ -27,7 +27,7 @@
         <p>(anonymous)</p>
       </a>
       <div class= "hidden" id="new_gist">
-        <form class="form" id="create-gist">
+        <form class="form" id="submit-gist">
           <div class="form-group">
             <label>Description</label>
             <input type="text" id="description" class="form-control">
@@ -54,7 +54,6 @@
       <% @current_user_gists.each do |gist| %>
         <%= render 'shared/card', gist: gist %>
       <% end %>
-      <div class="padded"></div>
     <% else %>
       <%= link_to omniauth_authorize_path(:user, :github) do %>
         <div class="text-center">
@@ -63,6 +62,7 @@
         </div>
       <% end %>
     <% end %>
+    <div class="padded"></div>
   </div>
 </div>
 
